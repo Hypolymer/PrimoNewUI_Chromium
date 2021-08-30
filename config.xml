@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>PrimoNewUI Chromium</Name>
+  <Author>Bill Jones, Tamara Marnell</Author>
+  <Version>2.0.1</Version>
+  <Active>True</Active>
+  <Type>Addon</Type>
+  <Description>Performs an Title, ISBN, and ISSN Search in the Primo New UI interface.</Description>
+  <Forms>
+    <Form>FormRequest</Form>
+  </Forms>
+  <Settings>
+    <Setting name="GoToLandingPage" value="" type="boolean">
+      <Description>Defines whether you would like the Addon to go directly to the PrimoURL start page set in your config (true or false).</Description>
+    </Setting>
+    <Setting name="AutoSearchISxN" value="" type="boolean">
+      <Description>Defines whether the ISxN search should be automatically performed when the form opens (true or false).</Description>
+    </Setting>
+    <Setting name="AutoSearchTitle" value="" type="boolean">
+      <Description>Defines whether the Title search should be automatically performed when the form opens (true or false).</Description>
+    </Setting>
+	<Setting name="PrimoVE" value="" type="boolean">
+		<Description>Defines whether this Primo installation is on VE (true or false).</Description>
+	</Setting>
+    <Setting name="BaseURL" value="" type="string">
+      <Description>Defines the base of your Primo URL. See the ReadMe for an example.</Description>
+    </Setting>
+    <Setting name="DatabaseName" value="" type="string">
+      <Description>Defines the Database Name of your Primo URL. See the ReadMe for an example.</Description>
+    </Setting>
+    <Setting name="SearchTab" value="" type="string">
+      <Description>Defines the tab to search. See the ReadMe for an example.</Description>
+    </Setting>
+    <Setting name="SearchScope" value="" type="string">
+      <Description>Defines the scope to search. See the ReadMe for an example.</Description>
+    </Setting>
+  </Settings>
+  <Files>
+    <File>PrimoNewUI_Chromium.lua</File>
+  </Files>
+</Configuration>
