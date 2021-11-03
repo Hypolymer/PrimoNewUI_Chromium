@@ -76,8 +76,7 @@ end
 function SearchISxN()
 	if GetFieldValue("Transaction", "ISSN") ~= "" then
 		local issn = GetFieldValue("Transaction", "ISSN");
-		local stripped_issn = issn:gsub('%D','');
-		cbrowser:Navigate(settings.BaseURL .. "?query=any,contains," .. stripped_issn .. "&" .. params);
+		cbrowser:Navigate(settings.BaseURL .. "?query=any,contains," .. issn .. "&" .. params);
 	else
 		interfaceMngr:ShowMessage("ISxN is not available from request form", "Insufficient Information");
 	end
