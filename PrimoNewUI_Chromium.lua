@@ -152,7 +152,7 @@ local iframe_checker = cbrowser:EvaluateScript("document.getElementsByTagName('f
 			local barcode_text = cbrowser:EvaluateScript("document.getElementsByClassName('itemBarcode')[0].innerText").Result;
 			--interfaceMngr:ShowMessage("[[" .. barcode_text .. "]]", "Barcode");
 	
-			if (library_text == nil or call_number_text == nil or barcode_text == nil) then
+			if (library_text == nil or call_number_text == nil) then
 				interfaceMngr:ShowMessage("Location or call number not found on this page.  Be sure to open an item record to import location and call number.", "Information not found");
 				return false;
 			else
