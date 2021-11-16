@@ -32,7 +32,7 @@ This value is the path of the Primo URL before the ?
 Customers on Primo VE will see "discovery" in the path instead of "primo-explore"  
 *Example: https://alliance-primo.hosted.exlibrisgroup.com/primo-explore/search*
 
-**BarcodeLocation**
+**BarcodeLocation**:  
 This field determines if you would like to grab the barcode information from Primo into ILLiad and also which ILLiad field would be used to store this information. Barcode information would be helpfule if you use NCIP intergration with Alma.
 You could use any text fields (nvarchar) in ILLiad [Transaction Database tables](https://support.atlas-sys.com/hc/en-us/articles/360011812074-ILLiad-Database-Tables). By default, it goes into "ReferenceNumber".
 If you do not want to grab the barcode from Primo, leave this field empty.
@@ -58,7 +58,7 @@ https://glocat.geneseo.edu/discovery/search?query=any,contains,dogs&tab=ALL_PHYS
 This value is the path of the Primo URL before the ?  
 *Example: https://suny-gen.primo.exlibrisgroup.com/discovery/search*
 
-**BarcodeLocation**
+**BarcodeLocation**:  
 This field determines if you would like to grab the barcode information from Primo into ILLiad and also which ILLiad field would be used to store this information. Barcode information would be helpfule if you use NCIP intergration with Alma.
 You could use any text fields (nvarchar) in ILLiad [Transaction Database tables](https://support.atlas-sys.com/hc/en-us/articles/360011812074-ILLiad-Database-Tables). By default, it goes into "ReferenceNumber".
 If you do not want to grab the barcode from Primo, leave this field empty.
