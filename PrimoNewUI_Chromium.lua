@@ -196,8 +196,5 @@ function InputLocationVE()
 		if (settings.BarcodeLocation ~= nil and settings.BarcodeLocation ~= "" and barcode_text ~= nil) then
 			SetFieldValue("Transaction", settings.BarcodeLocation, barcode_text);
 		end
-		if (settings.AutoSave == true) then
-			ExecuteCommand("Save", "Transaction");
-		end
 	ExecuteCommand("SwitchTab", {"Detail"});
 end
