@@ -16,6 +16,7 @@ settings.AutoSearchISxN = GetSetting("AutoSearchISxN");
 settings.AutoSearchTitle = GetSetting("AutoSearchTitle");
 settings.PrimoVE = GetSetting("PrimoVE");
 settings.BaseURL = GetSetting("BaseURL");
+settings.BarcodeLocation = GetSetting("BarcodeLocation");
 settings.DatabaseName = GetSetting("DatabaseName");
 settings.SearchTab = GetSetting("SearchTab");
 settings.SearchScope = GetSetting("SearchScope");
@@ -147,6 +148,9 @@ local iframe_checker = cbrowser:EvaluateScript("document.getElementsByTagName('f
 	
 			local call_number_text = cbrowser:EvaluateScript("document.getElementsByClassName('itemAccessionNumber')[0].innerText").Result;
 			--interfaceMngr:ShowMessage("[[" .. call_number_text .. "]]", "Call Number");
+			
+			local barcode_text = cbrowser:EvaluateScript("document.getElementsByClassName('itemBarcode')[0].innerText").Result;
+			--interfaceMngr:ShowMessage("[[" .. barcode_text .. "]]", "Barcode");
 	
 			if (library_text == nil or call_number_text == nil) then
 				interfaceMngr:ShowMessage("Location or call number not found on this page.  Be sure to open an item record to import location and call number.", "Information not found");
@@ -154,6 +158,10 @@ local iframe_checker = cbrowser:EvaluateScript("document.getElementsByTagName('f
 			else
 				SetFieldValue("Transaction", "Location", library_text .. " " .. library_sub_text);
 				SetFieldValue("Transaction", "CallNumber", call_number_text);
+			end
+			-- decide if settings.BarcodeLocation is not empty and them copy barcode_text over into ILLiad field
+			if (settings.BarcodeLocation ~= nil and settings.BarcodeLocation ~= "" and barcode_text ~= nil) then
+				SetFieldValue("Transaction", settings.BarcodeLocation, barcode_text);
 			end
 		end
 		ExecuteCommand("SwitchTab", {"Detail"});	
@@ -173,7 +181,10 @@ function InputLocationVE()
 
 	local call_number = tags:match('callNumber" dir="auto">(.-)<'):gsub('callNumber" dir="auto">', '');
 	--interfaceMngr:ShowMessage("[[" .. call_number .. "]]", "Items not found");
-
+  
+	local barcode_text = tags:match('<p>Barcode: (.-)<'):gsub('<p>Barcode: ', '');
+	--interfaceMngr:ShowMessage("[[" .. barcode_text .. "]]", "Barcode");
+  
 		if (location_name == nil or call_number == nil) then
 			interfaceMngr:ShowMessage("Location or call number not found on this page.", "Information not found");
 			return false;
@@ -181,7 +192,10 @@ function InputLocationVE()
 			SetFieldValue("Transaction", "Location", location_name);
 			SetFieldValue("Transaction", "CallNumber", call_number);
 		end
-	  
+		-- decide if settings.BarcodeLocation is not empty and them copy barcode_text over into ILLiad field
+		if (settings.BarcodeLocation ~= nil and settings.BarcodeLocation ~= "" and barcode_text ~= nil) then
+			SetFieldValue("Transaction", settings.BarcodeLocation, barcode_text);
+		end
 		if (settings.AutoSave == true) then
 			ExecuteCommand("Save", "Transaction");
 		end

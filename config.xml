@@ -19,11 +19,14 @@
     <Setting name="AutoSearchTitle" value="" type="boolean">
       <Description>Defines whether the Title search should be automatically performed when the form opens (true or false).</Description>
     </Setting>
-	<Setting name="PrimoVE" value="" type="boolean">
+	  <Setting name="PrimoVE" value="" type="boolean">
 		<Description>Defines whether this Primo installation is on VE (true or false).</Description>
-	</Setting>
+	  </Setting>
     <Setting name="BaseURL" value="" type="string">
       <Description>Defines the base of your Primo URL. See the ReadMe for an example.</Description>
+    </Setting>
+    <Setting name="BarcodeLocation" value="ReferenceNumber" type="string">
+      <Description>Defines the field in ILLiad where you would like barcode information to copy into. Default to "ReferenceNumber" field. Leave it empty to disable grabbing barcode</Description>
     </Setting>
     <Setting name="DatabaseName" value="" type="string">
       <Description>Defines the Database Name of your Primo URL. See the ReadMe for an example.</Description>
