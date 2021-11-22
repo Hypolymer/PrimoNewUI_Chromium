@@ -151,6 +151,9 @@ local iframe_checker = cbrowser:EvaluateScript("document.getElementsByTagName('f
 			
 			local barcode_text = cbrowser:EvaluateScript("document.getElementsByClassName('itemBarcode')[0].innerText").Result;
 			--interfaceMngr:ShowMessage("[[" .. barcode_text .. "]]", "Barcode");
+			-- strip trailing whitespace out of string barcode_text
+			barcode_text = string.gsub(barcode_text, "^%s*(.-)%s*$", "%1")
+
 	
 			if (library_text == nil or call_number_text == nil) then
 				interfaceMngr:ShowMessage("Location or call number not found on this page.  Be sure to open an item record to import location and call number.", "Information not found");
@@ -160,8 +163,8 @@ local iframe_checker = cbrowser:EvaluateScript("document.getElementsByTagName('f
 				SetFieldValue("Transaction", "CallNumber", call_number_text);
 			end
 			-- decide if settings.BarcodeLocation is not empty and them copy barcode_text over into ILLiad field
-			if (settings.BarcodeLocation ~= nil and settings.BarcodeLocation ~= "" and barcode_text ~= nil) then
-				SetFieldValue("Transaction", settings.BarcodeLocation, barcode_text);
+			if (settings.BarcodeLocation ~= nil and settings.BarcodeLocation ~= "" and barcode ~= nil) then
+				SetFieldValue("Transaction", settings.BarcodeLocation, barcode);
 			end
 		end
 		ExecuteCommand("SwitchTab", {"Detail"});	
@@ -184,6 +187,8 @@ function InputLocationVE()
   
 	local barcode_text = tags:match('<p>Barcode: (.-)<'):gsub('<p>Barcode: ', '');
 	--interfaceMngr:ShowMessage("[[" .. barcode_text .. "]]", "Barcode");
+	-- strip trailing whitespace out of string barcode_text
+	barcode_text = string.gsub(barcode_text, "^%s*(.-)%s*$", "%1")
   
 		if (location_name == nil or call_number == nil) then
 			interfaceMngr:ShowMessage("Location or call number not found on this page.", "Information not found");
@@ -193,8 +198,8 @@ function InputLocationVE()
 			SetFieldValue("Transaction", "CallNumber", call_number);
 		end
 		-- decide if settings.BarcodeLocation is not empty and them copy barcode_text over into ILLiad field
-		if (settings.BarcodeLocation ~= nil and settings.BarcodeLocation ~= "" and barcode_text ~= nil) then
-			SetFieldValue("Transaction", settings.BarcodeLocation, barcode_text);
+		if (settings.BarcodeLocation ~= nil and settings.BarcodeLocation ~= "" and barcode ~= nil) then
+			SetFieldValue("Transaction", settings.BarcodeLocation, barcode);
 		end
 	ExecuteCommand("SwitchTab", {"Detail"});
 end
