@@ -163,8 +163,8 @@ local iframe_checker = cbrowser:EvaluateScript("document.getElementsByTagName('f
 				SetFieldValue("Transaction", "CallNumber", call_number_text);
 			end
 			-- decide if settings.BarcodeLocation is not empty and them copy barcode_text over into ILLiad field
-			if (settings.BarcodeLocation ~= nil and settings.BarcodeLocation ~= "" and barcode ~= nil) then
-				SetFieldValue("Transaction", settings.BarcodeLocation, barcode);
+			if (settings.BarcodeLocation ~= nil and settings.BarcodeLocation ~= "" and barcode_text ~= nil) then
+				SetFieldValue("Transaction", settings.BarcodeLocation, barcode_text);
 			end
 		end
 		ExecuteCommand("SwitchTab", {"Detail"});	
@@ -198,8 +198,8 @@ function InputLocationVE()
 			SetFieldValue("Transaction", "CallNumber", call_number);
 		end
 		-- decide if settings.BarcodeLocation is not empty and them copy barcode_text over into ILLiad field
-		if (settings.BarcodeLocation ~= nil and settings.BarcodeLocation ~= "" and barcode ~= nil) then
-			SetFieldValue("Transaction", settings.BarcodeLocation, barcode);
+		if (settings.BarcodeLocation ~= nil and settings.BarcodeLocation ~= "" and barcode_text ~= nil) then
+			SetFieldValue("Transaction", settings.BarcodeLocation, barcode_text);
 		end
 	ExecuteCommand("SwitchTab", {"Detail"});
 end
