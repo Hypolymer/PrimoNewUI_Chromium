@@ -151,9 +151,8 @@ local iframe_checker = cbrowser:EvaluateScript("document.getElementsByTagName('f
 			
 			local barcode_text = cbrowser:EvaluateScript("document.getElementsByClassName('itemBarcode')[0].innerText").Result;
 			--interfaceMngr:ShowMessage("[[" .. barcode_text .. "]]", "Barcode");
-			-- strip trailing whitespace out of string barcode_text
-			barcode_text = string.gsub(barcode_text, "^%s*(.-)%s*$", "%1")
-
+			-- remove any none alphanumeric characters from barcode_text
+			local barcode_text = string.gsub(barcode_text, "[^%w]", "");
 	
 			if (library_text == nil or call_number_text == nil) then
 				interfaceMngr:ShowMessage("Location or call number not found on this page.  Be sure to open an item record to import location and call number.", "Information not found");
@@ -187,8 +186,8 @@ function InputLocationVE()
   
 	local barcode_text = tags:match('<p>Barcode: (.-)<'):gsub('<p>Barcode: ', '');
 	--interfaceMngr:ShowMessage("[[" .. barcode_text .. "]]", "Barcode");
-	-- strip trailing whitespace out of string barcode_text
-	barcode_text = string.gsub(barcode_text, "^%s*(.-)%s*$", "%1")
+	-- remove any none alphanumeric characters from barcode_text
+	local barcode_text = string.gsub(barcode_text, "[^%w]", "");
   
 		if (location_name == nil or call_number == nil) then
 			interfaceMngr:ShowMessage("Location or call number not found on this page.", "Information not found");
