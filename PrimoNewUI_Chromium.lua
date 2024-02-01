@@ -36,7 +36,13 @@ function Init()
 	--Create Form
 	PrimoNewUI_ChromiumSearchForm.Form = interfaceMngr:CreateForm("PrimoNewUI Chromium", "Script");
 	-- Create Chromium browser
-	cbrowser = PrimoNewUI_ChromiumSearchForm.Form:CreateBrowser("PrimoNewUI_Chromium_Search", "PrimoNewUI_Chromium_Search_Browser", "PrimoNewUI_Chromium_Search", "Chromium");
+	local browserType;
+	if AddonInfo.Browsers and AddonInfo.Browsers.WebView2 and AddonInfo.Browsers.WebView2 then
+		browserType = "WebView2";
+	else
+		browserType = "Chromium";
+	end
+	cbrowser = PrimoNewUI_ChromiumSearchForm.Form:CreateBrowser("PrimoNewUI_Chromium_Search", "PrimoNewUI_Chromium_Search_Browser", "PrimoNewUI_Chromium_Search", browserType);
 	--cbrowser:ShowDevTools();
 	-- Hide the text label
 	cbrowser.TextVisible = false;
