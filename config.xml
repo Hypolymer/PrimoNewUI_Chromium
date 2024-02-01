@@ -2,7 +2,7 @@
 <Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Name>PrimoNewUI Chromium</Name>
   <Author>Bill Jones, Tamara Marnell</Author>
-  <Version>2.0.2</Version>
+  <Version>2.0.3</Version>
   <Active>True</Active>
   <Type>Addon</Type>
   <Description>Performs an Title, ISBN, and ISSN Search in the Primo New UI interface.</Description>
